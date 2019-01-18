@@ -7,7 +7,7 @@ data structure
 
 
 ## 经典排序算法
-- [冒泡排序](./sorts/bubble_sort)
+- [冒泡排序](./sorts/bubble_sort/)
 - [ 插入排序 ](./sorts/insertion_sort)
 - [ 归并排序 ](./sorts/merge_sort)
 - [ 快速排序 ](./sorts/quick_sort)
