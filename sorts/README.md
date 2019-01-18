@@ -8,5 +8,4 @@
 
 
 ## 归并排序
-- [ 算法图解 ](./merge_sort/merge_sort.jpg)
-- [Python实现代码](./merge_sort/merge_sort.py)
+![merge sort](./merge_sort/merge_sort.jpg)
