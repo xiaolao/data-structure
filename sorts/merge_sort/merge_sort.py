@@ -3,7 +3,6 @@
 递推公式：merge_sort(p...r) = merge_sort(merge_sort(p...q), merge_sort(q...r))
 终止条件：r <= q
 """
-from copy import copy
 from typing import List
 
 
@@ -13,7 +12,7 @@ def merge_sort(a: List[int]):
 
 def _merge_sort_between(a: List[int], low: int, high: int):
     if low < high:
-        mid = low + (high-low)//2
+        mid = (low + high)//2
         _merge_sort_between(a, low, mid)
         _merge_sort_between(a, mid+1, high)
         _merge(a, low, mid, high)
