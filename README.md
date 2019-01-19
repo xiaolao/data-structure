@@ -1,9 +1,10 @@
-data structure
+经典排序算法
 =====
 
-分别使用Python，Go，C语言实现经典的数据结构和基础算法。
+内容包括算法图解，算法思想与实现，时间复杂度分析。
+-----
 
-------
+## 冒泡排序
 
 
 ## [ 经典排序算法 ](./sorts/)
@@ -12,4 +13,3 @@ data structure
 - [ 归并排序 ](./sorts/merge_sort)
 - [ 快速排序 ](./sorts/quick_sort)
 - [ 堆排序 ](./sorts/heap_sort)
-
