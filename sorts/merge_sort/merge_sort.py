@@ -13,7 +13,7 @@ def merge_sort(a: List[int]):
 
 def _merge_sort_between(a: List[int], low: int, high: int):
     if low < high:
-        mid = low + (high-low)//2
+        mid = (low + high)//2
         _merge_sort_between(a, low, mid)
         _merge_sort_between(a, mid+1, high)
         _merge(a, low, mid, high)
