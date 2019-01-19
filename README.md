@@ -7,6 +7,16 @@
 ## 冒泡排序
 
 
+<<<<<<< HEAD
 ## 归并排序
 - [ 算法图解 ](./merge_sort/merge_sort.jpg)
 - [Python实现代码](./merge_sort/merge_sort.py)
+=======
+## [ 经典排序算法 ](./sorts/)
+- [ 冒泡排序 ](./sorts/bubble_sort)
+- [ 插入排序 ](./sorts/insertion_sort)
+- [ 归并排序 ](./sorts/merge_sort)
+- [ 快速排序 ](./sorts/quick_sort)
+- [ 堆排序 ](./sorts/heap_sort)
+
+>>>>>>> d60acf6bca325944d25da2d3b8f537f9aec81ee5
