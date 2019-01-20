@@ -12,3 +12,10 @@
 - 空间复杂度：o(n)
 - 时间复杂度：o(nlogn)
 - [算法图解](./merge_sort/merge_sort.jpg)
+
+## [快速排序](./quick_sort/)
+- 稳定性：不稳定
+- 空间复杂度：o(1)
+- 时间复杂度：o(nlogn)
+- [算法图解](./quick_sort/quick_sort.jpg)
+- [归并与快排的比较](./quick_sort/quick_merge_diff.jpg)
