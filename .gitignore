@@ -116,3 +116,4 @@ db_settings.py
 *.json
 *.rawdata
 *local.py
+*.lock
