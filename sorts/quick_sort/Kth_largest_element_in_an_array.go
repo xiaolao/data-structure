@@ -1,5 +1,5 @@
-// find the k-th largest element in an array with o(n)
-// time complexity and o(1) space complexity.
+/* find the k-th largest element in an array with o(n)
+time complexity and o(1) space complexity. */
 package main
 
 func FindKthLargest(a []int, k int) int {

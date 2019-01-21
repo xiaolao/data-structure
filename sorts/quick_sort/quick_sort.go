@@ -1,3 +1,9 @@
+/* 通过游标i将a分成两个部分 a[p...i-1]都是
+小于pivot的数，为已处理区间 a[i...r-1]是为
+处理区间，每次从未处理区间取一个元素a[j]与
+pivot作比较，小于pivot则加到已处理区间尾部,
+即a[i]的位置。*/
+
 package qs
 
 func QuickSort(a []int) {
@@ -18,11 +24,6 @@ func quickSort(a []int, low, high int) {
 }
 
 func partition(a []int, low, high int) int {
-	// 通过游标i将a分成两个部分
-	// a[p...i-1]都是小于pivot的数，为已处理区间
-	// a[i...r-1]是为处理区间，每次从未处理区间
-	// 取一个元素a[j]与pivot作比较，小于pivot则加
-	// 到已处理区间尾部,即a[i]的位置。
 	var i = low
 	pivot := a[high]
 	for j := low; j < high; j++ {
