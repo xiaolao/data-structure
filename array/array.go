@@ -1,0 +1,66 @@
+package array
+
+import (
+	"errors"
+	"fmt"
+)
+
+// 数组方法约束
+type ArrayInterface interface {
+	Len() int
+	Find(index uint) (int, error)
+	Insert(index uint, v int) error
+	Delete(index uint) (int, error)
+}
+
+type Array struct {
+	data   []int
+	length uint
+}
+
+// allocate an array
+func NewArray(capacity uint) *Array {
+	if capacity == 0 {
+		return nil
+	} else {
+		return &Array{
+			length: 0,
+			data:   make([]int, capacity, capacity),
+		}
+	}
+}
+
+// 获取数组长度
+func (this *Array) Len() {
+	return this.length
+}
+
+// 判断下表是否越界
+func (this *Array) isIndexOutOfRange(index uint) bool {
+	if index >= uint(cap(this.data)) {
+		return true
+	}
+	return false
+}
+
+// 通过下标查找元素,范围为[0, n-1]
+func (this *Array) Find(index uint) (int, error) {
+	if this.isIndexOutOfRange(index) {
+		return 0, error.New("index out of range")
+	}
+	return this.data[index], nil
+}
+
+// 通过下标向数组中插入元素
+func (this *Array) Insert(index uint, v int) error {
+	if this.length == uint(cap(this.data)) {
+		return errors.New("full array")
+	}
+	if index != this.length && this.isIndexOutOfRange(index) {
+		return errors.New("index out of range")
+	}
+}
+
+//
+func (this *Array) Delete(index uint) (int, error) {
+}
