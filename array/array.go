@@ -59,8 +59,32 @@ func (this *Array) Insert(index uint, v int) error {
 	if index != this.length && this.isIndexOutOfRange(index) {
 		return errors.New("index out of range")
 	}
+	for i := this.length; i > index; i-- {
+		this.data[i] = this.data[i-1]
+	}
+	this.data[index] = v
+	this.length++
+	return nil
 }
 
-//
+// 删除索引index上的值
 func (this *Array) Delete(index uint) (int, error) {
+	if this.isIndexOutOfRange(index) {
+		return 0, errors.New("out of index range")
+	}
+	v := this.data[index]
+	for i := index; i < this.Len()-1; i++ {
+		this.data[i] = this.data[i+1]
+	}
+	this.length--
+	return v, nil
+}
+
+// 打印数列
+func (this *Array) Print() {
+	var format string
+	for i := uint(0); i < this.Len(); i++ {
+		format += fmt.Sprintf("|%+v", this.data[i])
+	}
+	fmt.Println(format)
 }
