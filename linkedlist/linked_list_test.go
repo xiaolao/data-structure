@@ -3,42 +3,60 @@ package linkedlist
 import "testing"
 
 func TestInsertToHead(t *testing.T) {
-	l := NewSingleLinkedList()
+	s := NewSingleLinkedList()
+	b := NewBoubleListedList()
 	for i := 0; i < 10; i++ {
-		l.InsertToHead(i + 1)
+		s.InsertToHead(i + 1)
+		b.InsertToHead(i + 1)
 	}
-	l.Print()
+	s.Print()
+	b.Print()
 }
 
 func TestInsertToTail(t *testing.T) {
-	l := NewSingleLinkedList()
+	s := NewSingleLinkedList()
+	b := NewBoubleListedList()
 	for i := 0; i < 10; i++ {
-		l.InsertToTail(i + 1)
+		s.InsertToTail(i + 1)
+		b.InsertToTail(i + 1)
 	}
-	l.Print()
+	s.Print()
+	b.Print()
 }
 
 func TestFindByIndex(t *testing.T) {
-	l := NewSingleLinkedList()
+	s := NewSingleLinkedList()
+	b := NewBoubleListedList()
 	for i := 0; i < 10; i++ {
-		l.InsertToTail(i + 1)
+		s.InsertToTail(i + 1)
+		b.InsertToTail(i + 1)
 	}
-	t.Log(l.FindByIndex(0))
-	t.Log(l.FindByIndex(9))
-	t.Log(l.FindByIndex(5))
-	t.Log(l.FindByIndex(11))
+	t.Log(s.FindByIndex(0), b.FindByIndex(0))
+	t.Log(s.FindByIndex(9), b.FindByIndex(9))
+	t.Log(s.FindByIndex(5), b.FindByIndex(5))
+	t.Log(s.FindByIndex(11), b.FindByIndex(11))
 }
 
 func TestDeleteNode(t *testing.T) {
-	l := NewSingleLinkedList()
+	s := NewSingleLinkedList()
+	b := NewBoubleListedList()
 	for i := 0; i < 3; i++ {
-		l.InsertToTail(i + 1)
+		s.InsertToTail(i + 1)
+		b.InsertToTail(i + 1)
 	}
-	l.Print()
+	s.Print()
+	b.Print()
+	t.Log(s.Len(), b.Len())
 
-	t.Log(l.DeleteNode(l.head.next))
-	l.Print()
+	t.Log(s.DeleteNode(s.head.next))
+	t.Log(b.DeleteNode(b.head.next))
+	s.Print()
+	b.Print()
+	t.Log(s.Len(), b.Len())
 
-	t.Log(l.DeleteNode(l.head.next.next))
-	l.Print()
+	t.Log(s.DeleteNode(s.head.next.next))
+	t.Log(b.DeleteNode(b.head.next.next))
+	s.Print()
+	b.Print()
+	t.Log(s.Len(), b.Len())
 }
