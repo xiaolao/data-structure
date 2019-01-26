@@ -68,10 +68,6 @@ func TestReverseNode(t *testing.T) {
 		s.InsertToTail(i + 1)
 		b.InsertToTail(i + 1)
 	}
-	t.Log("### before reverse ###")
 	s.Print()
 	b.Print()
-	t.Log("### after reverse ###")
-	s.Reverse()
-	s.Print()
 }

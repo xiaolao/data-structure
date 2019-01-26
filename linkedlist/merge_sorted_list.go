@@ -20,6 +20,7 @@ func MergeSortedList(l1, l2 *SingleLinkedList) *SingleLinkedList {
 			cur.next = cur2
 			cur2 = cur2.next
 		}
+		cur = cur.next
 	}
 	if cur1 != nil {
 		cur.next = cur1

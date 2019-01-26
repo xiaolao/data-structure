@@ -169,7 +169,7 @@ func (this *SingleLinkedList) Len() uint {
 
 // 单链表反转
 func (this *SingleLinkedList) Reverse() {
-	if this.head == nil || this.head.next == nil || this.head.next.next {
+	if this.head == nil || this.head.next == nil || this.head.next.next == nil {
 		return
 	}
 	cur := this.head.next
@@ -180,7 +180,7 @@ func (this *SingleLinkedList) Reverse() {
 		prev = cur
 		cur = tmp
 	}
-	this.head = prev
+	this.head.next = prev
 }
 
 // 判断单链表是否有环
@@ -189,8 +189,8 @@ func (this *SingleLinkedList) HasCycle() bool {
 	if this.head == nil {
 		return false
 	}
-	slow = this.head
-	fast = this.head
+	slow := this.head
+	fast := this.head
 	for fast != nil && fast.next != nil {
 		slow = slow.next
 		fast = fast.next.next
@@ -202,15 +202,14 @@ func (this *SingleLinkedList) HasCycle() bool {
 }
 
 // 删除单链表倒数第N个节点
-func (this *SingleLinkedList) DeleteBottomN(n uint) bool {
+func (this *SingleLinkedList) DeleteBottomN(n int) bool {
 	// 使用快慢两个指针，先让fast走n步之后slow跟上
 	// 当fast到达链表尾部时slow刚好为要删节点的前驱节点
-	if this.head == nil || this.head.next == nil {
+	if n <= 0 || this.head == nil || this.head.next == nil {
 		return false
 	}
-	var i uint = 1
 	fast := this.head
-	for ; i <= N && fast != nil; i++ {
+	for i := 1; i <= n && fast != nil; i++ {
 		fast = fast.next
 	}
 	if fast == nil {
@@ -226,7 +225,7 @@ func (this *SingleLinkedList) DeleteBottomN(n uint) bool {
 }
 
 // 找到单链表的中间节点
-func (this *SingleLinkedList) FindMiddleNode() *SingleLinkedList {
+func (this *SingleLinkedList) FindMiddleNode() *SingleListNode {
 	// 使用快慢两个节点，fast一次走两步，slow一次走一步
 	// 当fast到达链表尾部时，slow的位置即是单链表的中间节点
 	if this.head == nil || this.head.next == nil {
