@@ -60,3 +60,18 @@ func TestDeleteNode(t *testing.T) {
 	b.Print()
 	t.Log(s.Len(), b.Len())
 }
+
+func TestReverseNode(t *testing.T) {
+	s := NewSingleLinkedList()
+	b := NewBoubleListedList()
+	for i := 0; i < 10; i++ {
+		s.InsertToTail(i + 1)
+		b.InsertToTail(i + 1)
+	}
+	t.Log("### before reverse ###")
+	s.Print()
+	b.Print()
+	t.Log("### after reverse ###")
+	s.Reverse()
+	s.Print()
+}

@@ -68,9 +68,8 @@ func (this *SingleLinkedList) InsertAfter(p *SingleListNode, v interface{}) bool
 		return false
 	}
 	newNode := NewSingleListNode(v)
-	oldNode := p.next
+	newNode.next = p.next
 	p.next = newNode
-	newNode.next = oldNode
 	this.length++
 	return true
 }
@@ -88,7 +87,6 @@ func (this *SingleLinkedList) InsertBefore(p *SingleListNode, v interface{}) boo
 		}
 		prev = cur
 		cur = cur.next
-
 	}
 	if cur == nil {
 		return false
@@ -169,6 +167,83 @@ func (this *SingleLinkedList) Len() uint {
 	return this.length
 }
 
+// 单链表反转
+func (this *SingleLinkedList) Reverse() {
+	if this.head == nil || this.head.next == nil || this.head.next.next {
+		return
+	}
+	cur := this.head.next
+	var prev *SingleListNode = nil
+	for cur != nil {
+		tmp := cur.next
+		cur.next = prev
+		prev = cur
+		cur = tmp
+	}
+	this.head = prev
+}
+
+// 判断单链表是否有环
+func (this *SingleLinkedList) HasCycle() bool {
+	// 使用快慢两个指针slow,fast，若有环slow,fast比在环内相遇
+	if this.head == nil {
+		return false
+	}
+	slow = this.head
+	fast = this.head
+	for fast != nil && fast.next != nil {
+		slow = slow.next
+		fast = fast.next.next
+		if slow == fast {
+			return true
+		}
+	}
+	return false
+}
+
+// 删除单链表倒数第N个节点
+func (this *SingleLinkedList) DeleteBottomN(n uint) bool {
+	// 使用快慢两个指针，先让fast走n步之后slow跟上
+	// 当fast到达链表尾部时slow刚好为要删节点的前驱节点
+	if this.head == nil || this.head.next == nil {
+		return false
+	}
+	var i uint = 1
+	fast := this.head
+	for ; i <= N && fast != nil; i++ {
+		fast = fast.next
+	}
+	if fast == nil {
+		return false
+	}
+	slow := this.head
+	for fast.next != nil {
+		slow = slow.next
+		fast = fast.next
+	}
+	slow.next = slow.next.next
+	return true
+}
+
+// 找到单链表的中间节点
+func (this *SingleLinkedList) FindMiddleNode() *SingleLinkedList {
+	// 使用快慢两个节点，fast一次走两步，slow一次走一步
+	// 当fast到达链表尾部时，slow的位置即是单链表的中间节点
+	if this.head == nil || this.head.next == nil {
+		return nil
+	}
+	if this.head.next.next == nil {
+		return this.head.next
+	}
+	slow := this.head
+	fast := this.head
+	for fast != nil && slow != nil {
+		slow = slow.next
+		fast = fast.next.next
+	}
+	return slow
+}
+
 // 定义双链表
 type BoubleLinkedList struct {
 	head   *BoubleListNode
@@ -196,11 +271,12 @@ func (this *BoubleLinkedList) InsertAfter(p *BoubleListNode, v interface{}) bool
 	return true
 }
 
-//
+// 在双链表头部插入新节点
 func (this *BoubleLinkedList) InsertToHead(v interface{}) bool {
 	return this.InsertAfter(this.head, v)
 }
 
+// 在双链表尾部插入新节点
 func (this *BoubleLinkedList) InsertToTail(v interface{}) bool {
 	cur := this.head
 	for cur.next != nil {
