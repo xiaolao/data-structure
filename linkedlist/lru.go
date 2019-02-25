@@ -1,9 +1,9 @@
 package linkedlist
 
-import (
-	"container/list"
-	"errors"
-)
+// import (
+// 	"container/list"
+// 	"errors"
+// )
 
 type LRUCache interface {
 	// add a value to cache
