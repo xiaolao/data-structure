@@ -8,9 +8,9 @@ import (
 // 数组方法约束
 type ArrayInterface interface {
 	Len() int
-	Find(index uint) (int, error)
-	Insert(index uint, v int) error
-	Delete(index uint) (int, error)
+	Find(index uint) interface{}
+	Insert(index uint, v interface{}) bool
+	Delete(index uint) interface{}
 }
 
 type Array struct {
@@ -31,7 +31,7 @@ func NewArray(capacity uint) *Array {
 }
 
 // 获取数组长度
-func (this *Array) Len() {
+func (this *Array) Len() int {
 	return this.length
 }
 
@@ -44,20 +44,20 @@ func (this *Array) isIndexOutOfRange(index uint) bool {
 }
 
 // 通过下标查找元素,范围为[0, n-1]
-func (this *Array) Find(index uint) (int, error) {
+func (this *Array) Find(index uint) interface{} {
 	if this.isIndexOutOfRange(index) {
-		return 0, error.New("index out of range")
+		panic("index out of range")
 	}
-	return this.data[index], nil
+	return this.data[index]
 }
 
 // 通过下标向数组中插入元素
-func (this *Array) Insert(index uint, v int) error {
+func (this *Array) Insert(index uint, v interface{}) bool {
 	if this.length == uint(cap(this.data)) {
-		return errors.New("full array")
+		panic("full array")
 	}
 	if index != this.length && this.isIndexOutOfRange(index) {
-		return errors.New("index out of range")
+		panic("index out of range")
 	}
 	for i := this.length; i > index; i-- {
 		this.data[i] = this.data[i-1]
@@ -68,16 +68,16 @@ func (this *Array) Insert(index uint, v int) error {
 }
 
 // 删除索引index上的值
-func (this *Array) Delete(index uint) (int, error) {
+func (this *Array) Delete(index uint) interface{} {
 	if this.isIndexOutOfRange(index) {
-		return 0, errors.New("out of index range")
+		panic("out of index range")
 	}
 	v := this.data[index]
 	for i := index; i < this.Len()-1; i++ {
 		this.data[i] = this.data[i+1]
 	}
 	this.length--
-	return v, nil
+	return v
 }
 
 // 打印数列
