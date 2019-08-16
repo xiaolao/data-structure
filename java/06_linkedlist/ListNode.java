@@ -1,20 +1,26 @@
 package linkedlist;
 
 /**
- * 
+ * node for any type.
  */
-public class ListNode<E> {
-    private E value;
-    private ListNode<E> next;
+public class ListNode<V> {
 
-    public ListNode(E value, ListNode<E> next) {
+    // the value of the node.
+    private V value;
+
+    // indicate the next node.
+    private ListNode<V> next;
+
+    public ListNode(V value, ListNode<V> next) {
         this.next = next;
         this.value = value;
     }
 
-    public E getValue() {
+    public V getValue() {
         return value;
     }
 
+    public ListNode<V> getNext() {
+        return next;
+    }
 }
-
