@@ -1,4 +1,6 @@
 package linkedlist;
 
 
-public class Singly
+public class SinglyLinkedList {
+
+}

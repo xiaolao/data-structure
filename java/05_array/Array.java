@@ -1,4 +1,4 @@
-public interface ArrayInterface<T> {
+interface ArrayInterface<T> {
     public int length();
     public T find(int index);
     public boolean insert(int index, T value);
